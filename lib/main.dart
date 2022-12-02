@@ -10,26 +10,38 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: Stack(
-        alignment: AlignmentDirectional.center,
-        // diferente do Container, o Stack pode ter diversas "filhos" (children)
-        children: [
-          Container(
-            color: Colors.red,
-            width: 100,
-            height: 100,
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: Container(
+          color: Colors.white,
+          child: Stack(
+            alignment: AlignmentDirectional.center,
+            // diferente do Container, o Stack pode ter diversas "filhos" (children)
+            children: [
+              Container(
+                color: Colors.black,
+                width: 300,
+                height: 300,
+              ),
+              Container(
+                color: Colors.red,
+                width: 150,
+                height: 150,
+              ),
+              Container(
+                color: Colors.blue,
+                width: 75,
+                height: 75,
+              ),
+              Container(
+                color: Colors.yellow,
+                width: 37,
+                height: 37,
+              )
+            ],
           ),
-          Container(
-            color: Colors.yellow,
-            width: 50,
-            height: 50,
-          )
-        ],
-      ),
-    );
+        ));
   }
 }
