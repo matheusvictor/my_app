@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
         home: Scaffold(
             appBar: AppBar(title: Text('My Tasks')),
             body: ListView(
-              children: const [
+              children: [
                 Task('Learn Flutter'),
                 Task('Learn Libras'),
                 Task('Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem '
@@ -36,10 +36,17 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class Task extends StatelessWidget {
+class Task extends StatefulWidget {
   final String taskName;
 
   const Task(this.taskName, {Key? key}) : super(key: key);
+
+  @override
+  State<Task> createState() => _TaskState();
+}
+
+class _TaskState extends State<Task> {
+  int level = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -52,25 +59,38 @@ class Task extends StatelessWidget {
               color: Colors.blue,
               height: 140,
             ),
-            Container(
-              color: Colors.white,
-              height: 100,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(color: Colors.grey, width: 72, height: 100),
-                  Container(
-                    width: 200,
-                    child: Text(
-                      taskName,
-                      style: const TextStyle(
-                          fontSize: 18, overflow: TextOverflow.ellipsis),
-                    ),
+            Column(
+              children: [
+                Container(
+                  color: Colors.white,
+                  height: 100,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(color: Colors.grey, width: 72, height: 100),
+                      Container(
+                        width: 200,
+                        child: Text(
+                          widget.taskName,
+                          style: const TextStyle(
+                              fontSize: 18, overflow: TextOverflow.ellipsis),
+                        ),
+                      ),
+                      ElevatedButton(
+                          onPressed: () {
+                            setState(() {
+                              level++;
+                            });
+                          },
+                          child: Icon(Icons.arrow_drop_up))
+                    ],
                   ),
-                  ElevatedButton(
-                      onPressed: () {}, child: Icon(Icons.arrow_drop_up))
-                ],
-              ),
+                ),
+                Text(
+                  'Level: $level',
+                  style: TextStyle(color: Colors.white, fontSize: 16),
+                )
+              ],
             )
           ],
         ),
