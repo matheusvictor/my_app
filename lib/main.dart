@@ -16,11 +16,21 @@ class MyApp extends StatelessWidget {
         ),
         home: Scaffold(
             appBar: AppBar(title: Text('My Tasks')),
-            body: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
+            body: ListView(
+              children: const [
                 Task('Learn Flutter'),
                 Task('Learn Libras'),
+                Task('Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem '
+                    'Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem'
+                    ' Ipsum Lorem Ipsum Lorem Ipsum'),
+                Task('Lorem Ipsum'),
+                Task('Lorem Ipsum'),
+                Task('Lorem Ipsum'),
+                Task('Lorem Ipsum'),
+                Task('Lorem Ipsum'),
+                Task('Lorem Ipsum'),
+                Task('Lorem Ipsum'),
+                Task('Lorem Ipsum'),
               ],
             )));
   }
@@ -33,27 +43,37 @@ class Task extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Stack(
-        children: [
-          Container(
-            color: Colors.blue,
-            height: 140,
-          ),
-          Container(
-            color: Colors.white,
-            height: 100,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(color: Colors.grey, width: 72, height: 100),
-                Text(taskName),
-                ElevatedButton(
-                    onPressed: () {}, child: Icon(Icons.arrow_drop_up))
-              ],
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        child: Stack(
+          children: [
+            Container(
+              color: Colors.blue,
+              height: 140,
             ),
-          )
-        ],
+            Container(
+              color: Colors.white,
+              height: 100,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(color: Colors.grey, width: 72, height: 100),
+                  Container(
+                    width: 200,
+                    child: Text(
+                      taskName,
+                      style: const TextStyle(
+                          fontSize: 18, overflow: TextOverflow.ellipsis),
+                    ),
+                  ),
+                  ElevatedButton(
+                      onPressed: () {}, child: Icon(Icons.arrow_drop_up))
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
