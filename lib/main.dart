@@ -15,29 +15,46 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         home: Scaffold(
-          appBar: AppBar(title: Text('Minhas tarefas')),
-          body: Container(
-            child: Stack(
+            appBar: AppBar(title: Text('My Tasks')),
+            body: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(
-                  color: Colors.blue,
-                  height: 140,
-                ),
-                Container(
-                  color: Colors.white,
-                  height: 100,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(color: Colors.grey, width: 72, height: 100),
-                      Text('Aprender Flutter'),
-                      ElevatedButton(onPressed: (){}, child: Icon(Icons.arrow_drop_up))
-                    ],
-                  ),
-                )
+                Task('Learn Flutter'),
+                Task('Learn Libras'),
+              ],
+            )));
+  }
+}
+
+class Task extends StatelessWidget {
+  final String taskName;
+
+  const Task(this.taskName, {Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Stack(
+        children: [
+          Container(
+            color: Colors.blue,
+            height: 140,
+          ),
+          Container(
+            color: Colors.white,
+            height: 100,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(color: Colors.grey, width: 72, height: 100),
+                Text(taskName),
+                ElevatedButton(
+                    onPressed: () {}, child: Icon(Icons.arrow_drop_up))
               ],
             ),
-          ),
-        ));
+          )
+        ],
+      ),
+    );
   }
 }
