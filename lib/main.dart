@@ -14,33 +14,29 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: Container(
-          color: Colors.white,
-          child: Stack(
-            alignment: AlignmentDirectional.center,
-            // diferente do Container, o Stack pode ter diversas "filhos" (children)
-            children: [
-              Container(
-                color: Colors.black,
-                width: 300,
-                height: 300,
-              ),
-              Container(
-                color: Colors.red,
-                width: 150,
-                height: 150,
-              ),
-              Container(
-                color: Colors.blue,
-                width: 75,
-                height: 75,
-              ),
-              Container(
-                color: Colors.yellow,
-                width: 37,
-                height: 37,
-              )
-            ],
+        home: Scaffold(
+          appBar: AppBar(title: Text('Minhas tarefas')),
+          body: Container(
+            child: Stack(
+              children: [
+                Container(
+                  color: Colors.blue,
+                  height: 140,
+                ),
+                Container(
+                  color: Colors.white,
+                  height: 100,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(color: Colors.grey, width: 72, height: 100),
+                      Text('Aprender Flutter'),
+                      ElevatedButton(onPressed: (){}, child: Icon(Icons.arrow_drop_up))
+                    ],
+                  ),
+                )
+              ],
+            ),
           ),
         ));
   }
