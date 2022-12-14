@@ -19,18 +19,12 @@ class MyApp extends StatelessWidget {
             body: ListView(
               children: [
                 Task('Learn Flutter'),
-                Task('Learn Libras'),
-                Task('Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem '
-                    'Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem'
-                    ' Ipsum Lorem Ipsum Lorem Ipsum'),
-                Task('Lorem Ipsum'),
-                Task('Lorem Ipsum'),
-                Task('Lorem Ipsum'),
-                Task('Lorem Ipsum'),
-                Task('Lorem Ipsum'),
-                Task('Lorem Ipsum'),
-                Task('Lorem Ipsum'),
-                Task('Lorem Ipsum'),
+                Task('Medidate',
+                    taskImage:
+                        'https://manhattanmentalhealthcounseling.com/wp-content/uploads/2019/06/Top-5-Scientific-Findings-on-MeditationMindfulness-881x710.jpeg'),
+                Task('Cycling',
+                    taskImage:
+                        'https://tswbike.com/wp-content/uploads/2020/09/108034687_626160478000800_2490880540739582681_n-e1600200953343.jpg')
               ],
             )));
   }
@@ -38,8 +32,13 @@ class MyApp extends StatelessWidget {
 
 class Task extends StatefulWidget {
   final String taskName;
+  final String taskImage;
 
-  const Task(this.taskName, {Key? key}) : super(key: key);
+  const Task(this.taskName,
+      {Key? key,
+      this.taskImage =
+          'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80'})
+      : super(key: key);
 
   @override
   State<Task> createState() => _TaskState();
@@ -67,7 +66,13 @@ class _TaskState extends State<Task> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Container(color: Colors.grey, width: 72, height: 100),
+                      Container(
+                        color: Colors.grey,
+                        width: 72,
+                        height: 100,
+                        child:
+                            Image.network(widget.taskImage, fit: BoxFit.cover),
+                      ),
                       Container(
                         width: 200,
                         child: Text(
