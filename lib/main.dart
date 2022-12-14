@@ -18,11 +18,13 @@ class MyApp extends StatelessWidget {
             appBar: AppBar(title: Text('My Tasks')),
             body: ListView(
               children: [
-                Task('Learn Flutter'),
+                Task('Learn Flutter', difficulty: 5),
                 Task('Medidate',
+                    difficulty: 5,
                     taskImage:
                         'https://manhattanmentalhealthcounseling.com/wp-content/uploads/2019/06/Top-5-Scientific-Findings-on-MeditationMindfulness-881x710.jpeg'),
                 Task('Cycling',
+                    difficulty: 2,
                     taskImage:
                         'https://tswbike.com/wp-content/uploads/2020/09/108034687_626160478000800_2490880540739582681_n-e1600200953343.jpg')
               ],
@@ -33,11 +35,13 @@ class MyApp extends StatelessWidget {
 class Task extends StatefulWidget {
   final String taskName;
   final String taskImage;
+  final int difficulty;
 
   const Task(this.taskName,
       {Key? key,
       this.taskImage =
-          'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80'})
+          'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80',
+      required this.difficulty})
       : super(key: key);
 
   @override
@@ -73,13 +77,59 @@ class _TaskState extends State<Task> {
                         child:
                             Image.network(widget.taskImage, fit: BoxFit.cover),
                       ),
-                      Container(
-                        width: 200,
-                        child: Text(
-                          widget.taskName,
-                          style: const TextStyle(
-                              fontSize: 18, overflow: TextOverflow.ellipsis),
-                        ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            width: 200,
+                            child: Text(
+                              widget.taskName,
+                              style: const TextStyle(
+                                  fontSize: 18,
+                                  overflow: TextOverflow.ellipsis),
+                            ),
+                          ),
+                          Row(
+                            children: [
+                              Icon(
+                                Icons.star,
+                                size: 15,
+                                color: (widget.difficulty >= 1)
+                                    ? Colors.blue
+                                    : Colors.blue[100],
+                              ),
+                              Icon(
+                                Icons.star,
+                                size: 15,
+                                color: (widget.difficulty >= 2)
+                                    ? Colors.blue
+                                    : Colors.blue[100],
+                              ),
+                              Icon(
+                                Icons.star,
+                                size: 15,
+                                color: (widget.difficulty >= 3)
+                                    ? Colors.blue
+                                    : Colors.blue[100],
+                              ),
+                              Icon(
+                                Icons.star,
+                                size: 15,
+                                color: (widget.difficulty >= 4)
+                                    ? Colors.blue
+                                    : Colors.blue[100],
+                              ),
+                              Icon(
+                                Icons.star,
+                                size: 15,
+                                color: (widget.difficulty >= 5)
+                                    ? Colors.blue
+                                    : Colors.blue[100],
+                              ),
+                            ],
+                          )
+                        ],
                       ),
                       ElevatedButton(
                           onPressed: () {
@@ -100,7 +150,9 @@ class _TaskState extends State<Task> {
                         width: 200,
                         child: LinearProgressIndicator(
                           color: Colors.white,
-                          value: level / 10,
+                          value: (widget.difficulty) > 0
+                              ? (level / widget.difficulty) / 10
+                              : 1,
                         ),
                       ),
                     ),
