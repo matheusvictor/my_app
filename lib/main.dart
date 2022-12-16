@@ -1,18 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:estudos_flutter/home_screen.dart';
+import 'package:estudos_flutter/screens/home_screen.dart';
 
 void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   MyApp({super.key});
 
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

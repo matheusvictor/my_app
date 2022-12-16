@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:estudos_flutter/task.dart';
+import 'package:estudos_flutter/components/task.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
