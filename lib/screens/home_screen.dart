@@ -15,14 +15,14 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('My Tasks'),
+        title: const Text('My Tasks'),
         leading: Container(),
       ),
       body: AnimatedOpacity(
         opacity: showTask ? 1 : 0,
         duration: const Duration(milliseconds: 500),
         child: ListView(
-          children: [
+          children: const [
             Task('Learn Flutter', difficulty: 5),
             Task('Medidate',
                 difficulty: 5,

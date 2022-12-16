@@ -77,7 +77,7 @@ class _TaskState extends State<Task> {
                             level++;
                           });
                         },
-                        child: Icon(Icons.arrow_drop_up))
+                        child: const Icon(Icons.arrow_drop_up))
                   ],
                 ),
               ),
@@ -86,7 +86,7 @@ class _TaskState extends State<Task> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Container(
+                    child: SizedBox(
                       width: 200,
                       child: LinearProgressIndicator(
                         color: Colors.white,
@@ -100,7 +100,7 @@ class _TaskState extends State<Task> {
                     padding: const EdgeInsets.all(12.0),
                     child: Text(
                       'Level: $level',
-                      style: TextStyle(color: Colors.white, fontSize: 16),
+                      style: const TextStyle(color: Colors.white, fontSize: 16),
                     ),
                   )
                 ],
