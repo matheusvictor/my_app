@@ -27,11 +27,12 @@ class _HomeScreenState extends State<HomeScreen> {
             Task('Medidate',
                 difficulty: 5,
                 taskImage:
-                    'https://manhattanmentalhealthcounseling.com/wp-content/uploads/2019/06/Top-5-Scientific-Findings-on-MeditationMindfulness-881x710.jpeg'),
+                    'assets/images/meditation.jpeg'),
             Task('Cycling',
                 difficulty: 2,
                 taskImage:
-                    'https://tswbike.com/wp-content/uploads/2020/09/108034687_626160478000800_2490880540739582681_n-e1600200953343.jpg')
+                    'assets/images/bike.jpg'),
+            SizedBox(height: 80,)
           ],
         ),
       ),

@@ -9,7 +9,7 @@ class Task extends StatefulWidget {
   const Task(this.taskName,
       {Key? key,
       this.taskImage =
-          'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80',
+          'assets/images/notebook.jpg',
       required this.difficulty})
       : super(key: key);
 
@@ -53,8 +53,8 @@ class _TaskState extends State<Task> {
                       height: 100,
                       child: ClipRRect(
                           borderRadius: BorderRadius.circular(4),
-                          child: Image.network(widget.taskImage,
-                              fit: BoxFit.cover)),
+                          child:
+                              Image.asset(widget.taskImage, fit: BoxFit.cover)),
                     ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
