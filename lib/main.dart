@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MyApp extends StatefulWidget {
+  MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  bool showTask = true;
 
   @override
   Widget build(BuildContext context) {
@@ -15,8 +22,14 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         home: Scaffold(
-            appBar: AppBar(title: Text('My Tasks')),
-            body: ListView(
+          appBar: AppBar(
+            title: Text('My Tasks'),
+            leading: Container(),
+          ),
+          body: AnimatedOpacity(
+            opacity: showTask ? 1 : 0,
+            duration: const Duration(milliseconds: 500),
+            child: ListView(
               children: [
                 Task('Learn Flutter', difficulty: 5),
                 Task('Medidate',
@@ -28,7 +41,18 @@ class MyApp extends StatelessWidget {
                     taskImage:
                         'https://tswbike.com/wp-content/uploads/2020/09/108034687_626160478000800_2490880540739582681_n-e1600200953343.jpg')
               ],
-            )));
+            ),
+          ),
+          floatingActionButton: FloatingActionButton(
+            onPressed: () {
+              setState(() {
+                showTask = !showTask;
+              });
+            },
+            child: Icon(
+                showTask == true ? Icons.visibility_off : Icons.visibility),
+          ),
+        ));
   }
 }
 
